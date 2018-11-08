@@ -1,4 +1,3 @@
-require 'active_support/all'
 
 @math_questions = [
   {
@@ -23,7 +22,7 @@ require 'active_support/all'
   },
   {
     id: 5,
-    question: "What is PI to the 5th decimal (i.e. 3.xxxxx",
+    question: "What is PI to the 5th decimal (i.e. 3.xxxxx)",
     answer: "3.14159" 
   },
 
