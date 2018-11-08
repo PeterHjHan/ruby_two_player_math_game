@@ -3,7 +3,6 @@ require "./player.rb"
 
 class Game
 
-  attr_reader :p1_name, :p2_name
   attr_accessor :p1, :p2, :turn
 
   def initialize
@@ -35,14 +34,18 @@ class Game
   def show_current_player
     case @turn
     when 0
-      print "#{p1_name}"
+      puts "Your turn #{p1.name}!"
     else
-      print "#{p2_name}"
+      puts "Your turn #{p2.name}"
     end
   end
 
   def declare_winner
-    
+    if p1.lives == 0
+      puts "#{p2.name} is the Winner!"
+    else
+      puts "#{p1.name} is the Winner!"
+    end
   end
 
   def show_score
@@ -50,7 +53,7 @@ class Game
   end
 
   def start_game
-    while(p1.lives > 0 || p2.lives > 0)
+    while(p1.lives > 0 && p2.lives > 0)
       show_current_player
       show_question
       if(@question.correct && @turn == 0)
@@ -68,9 +71,9 @@ class Game
         @turn -=1
         p2.lose_life
       end
-        
       show_score
     end
+    declare_winner
   end
 
 end
